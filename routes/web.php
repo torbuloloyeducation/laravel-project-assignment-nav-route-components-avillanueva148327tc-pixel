@@ -13,8 +13,13 @@ Route::view('/', 'welcome', [
     ],
 ]);
 
-Route::view('/about', 'about');
-Route::view('/contact', 'contact');
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 Route::get('/formtest', function(){
     $emails = session()->get('$emails', []);
@@ -35,4 +40,17 @@ Route::post('/formtest', function(){
 Route::get('/delete-emails', function(){
     session()->forget('$emails');
     return redirect('/formtest');
+});
+
+Route::get('/services', function () {
+    return view('services');
+});
+
+
+Route::get('/showcases', function () {
+    return view('showcases');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
 });
